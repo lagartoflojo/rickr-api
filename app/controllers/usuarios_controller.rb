@@ -15,7 +15,11 @@ class UsuariosController < ApplicationController
   # GET /usuarios/1.json
   def show
     @usuario = Usuario.find(params[:id])
-    redirect_to :controller => 'estatico', :action => 'perfil', :nombre_usuario => @usuario.usuario
+    respond_to do |format|
+      format.html { redirect_to :controller => 'estatico', :action => 'perfil', :nombre_usuario => @usuario.usuario }
+      format.json { render json: @usuario }
+    end
+    
   end
 
   # GET /usuarios/new
