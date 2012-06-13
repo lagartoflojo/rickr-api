@@ -22,6 +22,8 @@ Rickr::Application.routes.draw do
 
   resources :usuarios
 
+  resources :api_authentication, only: [:create]
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
