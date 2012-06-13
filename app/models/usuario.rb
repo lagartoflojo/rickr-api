@@ -4,6 +4,8 @@ class Usuario < ActiveRecord::Base
   
   validates_presence_of :nombre, :apellido, :usuario, :password
   validates_confirmation_of :password
+
+  before_create :set_api_key
   
   def self.login(nombreUsuario, password)
     usuario = self.find_by_usuario(nombreUsuario)
@@ -27,6 +29,11 @@ class Usuario < ActiveRecord::Base
       params[:usuario][:foto_perfil] = archivoSubido.original_filename
     end
     params
+  end
+
+  private
+  def set_api_key
+    self.api_key = SecureRandom.urlsafe_base64
   end
   
 end
