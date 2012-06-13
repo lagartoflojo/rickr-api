@@ -1,0 +1,20 @@
+<div class="foto_completa">
+  <%= image_tag(@foto.archivo_url) %>
+</div>
+<h2 class="foto_titulo"><%= @foto.nombre %></h2>
+<p class="descripcion foto_completa"><%= @foto.descripcion %></p>
+<div class="clear"></div>
+<div class="informacion_adicional">
+  <% if(@foto.albums) %>
+    <p class="foto_albums">Albums a los que pertenece esta foto: 
+    <% @foto.albums.publicados.each do |album| %>	
+      <%= link_to album.nombre, album %>
+    <% end %>
+    </p>
+  <% end %>
+
+  <% if @foto.usuario_id == session[:usuario_id] %>
+    <%= link_to 'Editar', edit_foto_path(@foto) %> |
+  <% end %>
+  <%= link_to 'Volver', 'javascript: history.go(-1)' %>
+</div>

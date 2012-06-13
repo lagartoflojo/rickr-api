@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bienvenido a Rickr</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="wrapper">
+      <div id="superior">
+        <div id="busqueda">
+          <%= form_for '', :name => 'busqueda', :url => buscar_path, :method => :get do |f| %>
+            <%= f.text_field :busqueda, :value => 'texto de busqueda', :title => 'texto de busqueda' %>
+            <%= f.submit 'Buscar' %>
+          <% end %>
+        </div>
+        <div id="caja_usuario">
+          <div class="membrete">
+            <p class="nombre">
+            <% if(session[:usuario_id]) %>
+            <% usuario = Usuario.find(session[:usuario_id]) %>
+               <%= "#{usuario.nombre} #{usuario.apellido} (#{usuario.usuario})"%>
+              <% if usuario.foto_perfil %>
+                <%= image_tag(usuario.foto_perfil_url, :style => 'width: 30px') %>
+              <% else %>
+                <%= image_tag('/images/usuario.png') %>
+              <% end %>
+            <% end %>
+            </p>
+          </div>
+          <div>
+            <% if(session[:usuario_id]) %>
+              <h3><%= link_to 'Ver Perfil', perfil_path %>, <%= link_to 'Editar perfil', editar_perfil_path %> o <%= link_to 'Salir', logout_path %></h3>
+            <% else %>
+              <h3><%= link_to 'Entra o Registrate!', :root %></h3>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div id="cuerpo">
+        <% if flash[:notice] %>
+        <p id="notice"><%= flash[:notice] %></p> 
+        <% end %>
+        <%= yield %>
+      </div>
+      <div id="pie">
+        rickr 2012
+      </div>
+  </div>
+</body>
+</html>

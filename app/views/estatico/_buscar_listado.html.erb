@@ -1,0 +1,9 @@
+<% if @resultados.size > 0 %>
+  <% @resultados.each do |resultado| %>
+  <div class="busqueda_elemento">
+  	<%= resultado.nombre %>, <%= link_to 'Ver', resultado %>
+  </div>
+  <% end %>
+<% else %>
+No se han encontrado coincidencias.
+<% end%>

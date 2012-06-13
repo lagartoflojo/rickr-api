@@ -1,0 +1,20 @@
+<h1>Busqueda de "<%= @busqueda %>"</h1>
+<%= form_for '', :name => 'busqueda', :url => buscar_path, :remote => true, :method => :get do |f| %>
+  <%= f.text_field :busqueda, :value => 'texto de busqueda', :title => 'texto de busqueda' %>
+  <%= f.submit 'Buscar' %>
+<% end %>
+<ul class="busqueda_seleccion">
+	<li class="<%= @tipo == nil || @tipo == 'fotos' ? 'seleccionado':'' %>">
+		<%= link_to 'Fotos', "buscar?busqueda=#{@busqueda}&tipo=fotos", :id => "fotos", :remote => true %>
+	</li>
+	<li class="<%= @tipo == 'albumes' ? 'seleccionado':'' %>">
+		<%= link_to 'Albumes', "buscar?busqueda=#{@busqueda}&tipo=albums", :id => "albums", :remote => true %>
+	</li>
+	<li class="<%= @tipo == 'usuarios' ? 'seleccionado':'' %>">
+		<%= link_to 'Usuarios', "buscar?busqueda=#{@busqueda}&tipo=usuarios", :id => "usuarios", :remote => true %>
+	</li>
+</ul>
+<div class="clear"></div>
+<div class="busqueda_resultados" id="resultados">
+	<%= render 'buscar_listado' %>
+</div>

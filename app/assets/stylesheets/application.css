@@ -1,0 +1,232 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+*/
+body, html { 
+  margin: 0;
+  padding: 0;
+  height: 99%; 
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+}
+body { background-color: #fff; color: #333; }
+a {
+  color: #000;
+}
+a:visited {
+  color: #666; 
+}
+a:hover {
+  color: #fff;
+  background-color: #000;
+}
+/* Layout principal */
+#wrapper {
+  min-height: 100%;
+  position: relative;
+}
+/* Barra superior */
+#superior {
+  height: 40px;
+  clear: both;
+  background-image: url('/images/background.png');
+  background-repeat: repeat-x;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+#superior #busqueda {
+  float: left;
+  width: 30%;
+  margin-top: 8px;
+}
+
+#superior #caja_usuario {
+  float: right;
+  width: 60%;
+}
+
+#superior #caja_usuario img{
+  float: right;
+  display: block;
+  margin-left: 10px;
+}
+
+#superior #caja_usuario div {
+  float: right;
+}
+
+/* Zona central  */
+#cuerpo {
+  padding-top: 50px;
+  padding-bottom: -60px;
+}
+#cuerpo #imagen_home {
+  float: left;
+  width: 40%;
+}
+#cuerpo #imagen_home img {
+  max-width: 200px;
+}
+#cuerpo #texto_home {
+  float: left;
+  width: 60%;
+}
+
+/* Inferior */
+#inferior {
+  clear: both;
+  padding-top: 20px;
+  height: 100px;
+}
+
+.paso {
+  float: left;
+  width: 200px;
+  height: 200px;
+  background-color: #eee;
+  margin: 10px;
+}
+
+/* Pie */
+#pie {
+	bottom:0;
+	width:100%;
+	height:60px;  
+	padding-top: 30px;
+}
+
+/* Clases auxiliares */
+.clear {
+  clear: both;
+}
+/* Perfil */
+.superior_interior {
+  height: 20px;
+}
+.superior_interior h1 {
+  font-height: 12px;
+  float: left;
+}
+.superior_interior img {
+  float: right;
+}
+
+.caja {
+}
+
+.caja h2 {
+}
+
+.caja img {
+  float: left;
+  width: 100px;
+  margin: 2px;
+  border: 1px dashed #ccc;
+}
+.caja a {
+  font-style: italic;
+}
+.caja p {
+  text-indent: 10px;
+  font-style: italic;
+  font-weight: bold;
+  color: #999;
+}
+.caja_elemento {
+  float: left;
+  margin-left: 5px;
+}
+
+.caja_elemento h4 {
+  font-size: 0.9em;
+}
+
+.caja_elemento p.descripcion, p.descripcion {
+  font-style: italic;
+  font-size: 0.75em;
+  line-height: 1em;
+}
+/* Foto  */
+.foto_completa {
+  text-align: center;
+}
+.foto_completa img {
+  border: 1px dashed #ccc;
+  padding: 1px;
+}
+.foto_titulo {
+  border-left: 3px solid #000;
+  text-indent: 30px;
+  margin-left: 30px;
+}
+.foto_completa.descripcion {
+  margin-left: 70px;
+  text-align: left;
+}
+.informacion_adicional {
+  margin-left: 20px;
+  margin-top: 40px;
+  border-top: 1px #ccc dotted;
+}
+/* Membrete perfil */
+.membrete {
+  color: white; 
+  width: 160px; 
+  font-size: 10px;
+  margin-left: 40px; 
+  overflow: hidden;
+}
+/* Albums */
+.fotos img{
+  border: 1px dashed #ccc;
+  padding: 1px;
+}
+/* Inputs */
+.inputError {
+	background-color: #FF3300;
+}
+
+.inputSelected {
+	background-color: #FFFF99;
+}
+/* Busqueda */
+ul.busqueda_seleccion {
+	list-style: none;
+}
+
+.busqueda_seleccion li {
+	float: left;
+	border: 1px dashed #ccc;
+}
+
+.busqueda_seleccion li a {
+	display: block;
+	text-decoration: none;
+	padding: 5px;
+}
+
+.busqueda_seleccion li a:hover, .busqueda_seleccion li.seleccionado a {
+	background-color: #ccc;
+	color: white;
+}
+/* Twitter */
+p.tweet {
+  font-style: italic;
+}
+
+p.tweet:first-letter {
+  font-size:130%;
+  font-weight: bold;
+}

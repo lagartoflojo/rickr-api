@@ -1,0 +1,22 @@
+<div id="imagen_home">
+  <%= link_to image_tag(@foto_home.archivo_url), @foto_home %>
+</div>
+<div id="texto_home">
+  <div>
+    <h1>Bienvenido <br />
+      a <br />
+      Rickr</h1>
+    <div id="formulario_home">
+      <%= form_for :usuario, :url => login_path, :name => 'login', :method => :post do |f| %>
+        <%= f.text_field :nick, :value => 'usuario...', :title => 'usuario...' %><br />
+        <%= f.password_field :password, :value => 'password...', :title => 'password...' %><br />
+        <%= f.submit 'Entrar' %><%= link_to 'Registro', new_usuario_path %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div id="inferior">
+  <% 1.upto(3) do |indice| %>
+  <div class="paso" id="paso_<%= indice %>"><%= @tweets[indice-1]['text'] %></div>
+  <% end %>
+</div>

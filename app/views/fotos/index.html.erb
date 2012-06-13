@@ -1,0 +1,23 @@
+<% if @usuario %>
+  <h1>Fotos de <%= @usuario.nombre %> <%= @usuario.apellido %></h1>
+<% end %>
+<div class="caja">
+  <% @fotos.each do |foto| %>
+  <div id="<%= "foto_#{foto.id}" %>" class="caja_elemento">
+    <%= image_tag(foto.archivo_url) %>
+    <div class="foto_informacion">
+      <h4><%= foto.nombre %></h4>
+      <p class="descripcion"><%= foto.descripcion %></p>
+      <%= link_to 'Ver Foto', foto %>
+      <% if @usuario && @usuario.id == session[:usuario_id] %>
+        <%= link_to 'Editar', edit_foto_path(foto) %>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+  <div class="clear" style="height: 10px"></div>
+  <%= will_paginate(@fotos) %>
+</div>
+<% if @usuario && @usuario.id == session[:usuario_id] %>
+  <%= link_to 'Nueva Foto', new_foto_path %>
+<% end %>

@@ -1,0 +1,44 @@
+<%= form_for(@usuario) do |f| %>
+  <% if @usuario.errors.any? %>
+    <div id="error_explanation">
+      <h2>No se ha podido crear el usuario:</h2>
+
+      <ul>
+      <% @usuario.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :apellido %><br />
+    <%= f.text_field :apellido %>
+  </div>
+  <div class="field">
+    <%= f.label :usuario %><br />
+    <%= f.text_field :usuario %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= label_tag 'password_confirmation', 'Confirme su password' %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <% if @usuario.foto_perfil %>
+    <%= image_tag(@usuario.foto_perfil_url)%>
+  <% end %> 
+  <div class="field">
+    <%= f.label :foto_perfil %><br />
+    <%= f.file_field :foto_perfil %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Guardar' %>
+  </div>
+<% end %>

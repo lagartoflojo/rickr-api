@@ -1,0 +1,37 @@
+<div class="superior_interior">
+  <h1><%= @usuario.nombre %></h1>
+  <% if @usuario.foto_perfil %>
+  <%= image_tag(@usuario.foto_perfil_url, :style => 'width: 30px') %>
+  <% else %>
+  <%= image_tag('/images/usuario.png') %>
+  <% end %>
+</div>
+<div class="clear"></div>
+<div class="caja">
+  <h2>Fotos</h2>
+  <% @usuario.fotos.limit(2).each do |foto| %>
+  <%= image_tag(foto.archivo_url) %>
+  <% end %>
+  <div class="clear"></div>
+  <%= link_to 'Ver todas las fotos del usuario', fotos_usuario_path(@usuario.id) %>
+</div>
+<div class="clear"></div>
+<div class="caja">
+  <h2>Albumes</h2>
+  <% @usuario.albums.publicados.limit(2).each do |album| %>
+    <p><%= album.nombre %>: <%= album.albums_fotos.length %> foto(s)</p>
+  <% end %>
+  <%= link_to 'Ver todos los albums del usuario', albums_usuario_path(@usuario.id) %>
+</div>
+<% if @usuario.twitter_token %>
+<div class="clear"></div>
+<div class="caja">
+  <h2>Mis tweets</h2>
+  <% @tweets.each do |tweet| %>
+  <p class="tweet"><%= tweet['text'] %></p>
+  <% end %>
+</div>
+<p>Puedes revocar el acceso a Twitter de Rickr <%= link_to 'haciendo clic aqui', revocar_twitter_path %></p>
+<% else %>
+Puedes <%= link_to 'conectarte con twitter', autenticar_twitter_path %> y tener integrado tu twitter aca, pronto mas novedades!
+<% end %>

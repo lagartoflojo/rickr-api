@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  nombre: Peter
+  apellido: Griffin
+  usuario: peter
+  password: 123456
+
+two:
+  id: 2
+  nombre: Tom
+  apellido: Hanks
+  usuario: tom
+  password: 123456

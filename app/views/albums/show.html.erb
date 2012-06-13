@@ -1,0 +1,14 @@
+<div class="fotos">
+  <% @album.fotos.each do |foto| %>
+    <%= link_to image_tag(foto.archivo_url), foto %>
+  <% end %>
+</div>
+<h2 class="album_titulo"><%= @album.nombre %></h2>
+<p class="descripcion album_completo"><%= @album.descripcion %></p>
+<p><%= @album.fotos.length %> foto(s)</p>
+<div class="clear"></div>
+
+<% if @album.usuario_id == session[:usuario_id] %>
+  <%= link_to 'Editar', edit_album_path(@album) %> |
+<% end %>
+<%= link_to 'Volver', 'javascript: history.go(-1)' %>

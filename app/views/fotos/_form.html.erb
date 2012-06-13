@@ -1,0 +1,42 @@
+<%= form_for(@foto) do |f| %>
+  <% if @foto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@foto.errors.count, "error") %> prohibited this foto from being saved:</h2>
+
+      <ul>
+      <% @foto.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :descripcion %><br />
+    <%= f.text_field :descripcion %>
+  </div>
+  <div class="field">
+    <%= f.label :archivo %><br />
+    <%= f.file_field :archivo %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :usuario_id, :value => session[:usuario_id] %>
+  </div>
+  <div class="field">
+    <%= label_tag 'Albumes Vinculados' %><br />
+    <%= f.fields_for :albums_fotos do |albumFoto| %>
+      <%= albumFoto.label :album_id %><br />
+      <%= albumFoto.collection_select(:album_id, Album.all, :id, :nombre, :include_blank => true) %>
+      <% if albumFoto.object.album_id  %>
+      <%= albumFoto.label '_destroy', 'Remover' %><%= albumFoto.check_box '_destroy' %><br />
+      <% end %>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

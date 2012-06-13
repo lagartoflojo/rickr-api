@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  nombre: Peters foto
+  descripcion: Una foto de Peter
+  archivo: 'cat.jpg'
+  usuario_id: 1
+
+two:
+  id: 2
+  nombre: Pauls foto
+  descripcion: un dibujo de paul
+  archivo: 'paul.jpg'
+  usuario_id: 2

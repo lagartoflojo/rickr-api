@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  nombre: Peters album
+  descripcion: My Album
+  tags: 'peter, album'
+  usuario_id: 1
+  publicado: true
+
+two:
+  id: 2
+  nombre: Toms album
+  descripcion: My Album
+  tags: 'tom, album'
+  usuario_id: 2
+  publicado: true

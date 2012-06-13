@@ -1,0 +1,30 @@
+<% if @usuario %>
+<h1>Albumes de <%= @usuario.nombre %> <%= @usuario.apellido %></h1>
+<% end %>
+<div class="caja">
+  <% @albums.each do |album| %>
+  <div id="<%= "album_#{album.id}" %>" class="caja_elemento">
+    <div class="fotos">
+      <% album.fotos.each do |foto| %>
+      <%= image_tag(foto.archivo_url) %>
+      <% end %>
+    </div>
+    <div class="clear"></div>
+    <div class="album_informacion">
+      <h4><%= album.nombre %></h4>
+      <p class="descripcion"><%= album.descripcion %></p>
+      <p class="tags">Tags: <%= album.tags %></p>
+      <%= link_to 'Ver Album', album %>
+      <% if @usuario && @usuario.id == session[:usuario_id] %>
+        <%= link_to 'Editar', edit_album_path(album) %>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+  <div class="clear" style="height: 10px"></div>
+  <%= will_paginate(@albums) %>
+</div>
+<br />
+<% if @usuario && @usuario.id == session[:usuario_id] %>
+  <%= link_to 'Nuevo Album', new_album_path %>
+<% end %>
