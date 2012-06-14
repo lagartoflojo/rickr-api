@@ -1,12 +1,11 @@
 class ApiAuthenticationController < ApplicationController
+  respond_to :json
   skip_before_filter :authenticate_api
 
   def create
+    logger.info params.inspect
     if @user = Usuario.login(params[:user_name], params[:password])
-      logger.info @user.inspect
-      respond_to do |format|
-        format.json { render json: { api_key: @user.api_key } }
-      end
+      respond_with @user
     else
       head :forbidden
     end
