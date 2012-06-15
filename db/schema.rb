@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120416062418) do
+ActiveRecord::Schema.define(:version => 20120614155109) do
 
   create_table "albums", :force => true do |t|
     t.string   "nombre"
@@ -54,6 +54,9 @@ ActiveRecord::Schema.define(:version => 20120416062418) do
     t.string   "foto_perfil"
     t.string   "twitter_token"
     t.string   "twitter_verifier"
+    t.string   "api_key"
   end
+
+  add_index "usuarios", ["api_key"], :name => "index_usuarios_on_api_key", :unique => true
 
 end

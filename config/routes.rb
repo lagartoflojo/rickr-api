@@ -15,12 +15,22 @@ Rickr::Application.routes.draw do
   match 'autenticar_twitter' => 'estatico#autenticar_twitter', :as => :autenticar_twitter
   match 'autenticacion_twitter_exitosa' => 'estatico#autenticacion_twitter_exitosa', :as => :autenticar_twitter_exito
   match 'revocar_twitter' => 'estatico#revocar_twitter', :as => :revocar_twitter
+
+  resources :api_authentication, only: [:create]
   
   resources :albums
 
   resources :fotos
 
-  resources :usuarios
+  resources :usuarios do
+    resources :friends
+    # member do 
+    #   get 'friends'
+    # end
+    collection do
+      get 'photo_urls'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
